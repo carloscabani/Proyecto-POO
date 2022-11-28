@@ -6,23 +6,35 @@ public class Urbanizacion {
     
     
     public String nombreUrb;
-    public int etapa;
+    public int etapaUrb;
     public String emailAdmin;
-    public String direccion;
-    public String constructora;
+    public String direccionUrb;
+    public String constructoraUrb;
     public String admin;
 
 
-    public void setModificarInfo(String nombreUrb, int etapa, String emailAdmin,String direccion, String constructora, String admin){
+    public void modificarInfoUrb(String nombreUrb, int etapa, String emailAdmin,
+            String direccion, String constructora, String admin){
         
         this.nombreUrb= nombreUrb;
-        this.etapa=etapa;
+        this.etapaUrb=etapa;
         this.emailAdmin=emailAdmin;
-        this.direccion=direccion;
-        this.constructora=constructora;
+        this.direccionUrb=direccion;
+        this.constructoraUrb=constructora;
         this.admin=admin;
         
     }
+    
+    public void mostrarInfoUrb(){
+        System.out.println("Nombre: "+nombreUrb+"\nEtapa: "+etapaUrb+
+                "\nEmail administracion: "+emailAdmin+"\nDireccion: "+direccionUrb+
+                "\nConstructora: "+constructoraUrb+"\nAdministrador: "+admin);
+        
+    
+    
+    
+    }
+    //El administrador se lo selecciona entre los colaboradores registrados.
     
     
     
