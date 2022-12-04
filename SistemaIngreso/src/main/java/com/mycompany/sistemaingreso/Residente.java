@@ -1,6 +1,8 @@
 
 package com.mycompany.sistemaingreso;
 
+import java.util.ArrayList;
+
 
 public class Residente {
     public String cedulaResidente;
@@ -21,10 +23,29 @@ public void mostrarInfoResidente(){
                 "\nCantidad de personas: "+cantidadPersonas+"\nUrbanizacion: "+urbanizacion);
 }
 /*mz no es definido
-//Se podrán agregar residentes, editar y eliminar. La acción de eliminar lo que hará es cambiar
-//el estado a Inactivo y además pondrá en estado inactivo algún permiso que haya sido creado
+Se podrán agregar residentes, editar y eliminar. La acción de eliminar lo que hará es cambiar
+el estado a Inactivo*/
+
+public void agregarResidentes(ArrayList<String> residentes, String residente){
+
+    residentes.add(residente);
+
+}
+
+public void setEditarResidentes(String residente){
+    this.nombreResidente=residente;
+}
+
+public void eliminarResidente(String estadoResidente){
+
+    if (estadoResidente.equals("Activo")){
+    
+        estadoResidente="Inactivo";
+    }
+/*además pondrá en estado inactivo algún permiso que haya sido creado
 por ese residente.*/
 
 
 
+}
 }

@@ -1,6 +1,8 @@
 
 package com.mycompany.sistemaingreso;
 
+import java.util.ArrayList;
+
 
 public class Urbanizacion {
     
@@ -12,7 +14,14 @@ public class Urbanizacion {
     public String constructoraUrb;
     public String admin;
 
-
+    //se selecciona al administrador
+    public void seleccionarAdmin(ArrayList<String> empleado){
+        ColaboradorUrb colab=new ColaboradorUrb();
+        colab.seleccionarEmpleado(empleado);
+    }
+    
+    
+    
     public void modificarInfoUrb(String nombreUrb, int etapa, String emailAdmin,
             String direccion, String constructora, String admin){
         
