@@ -6,6 +6,8 @@
 package com.mycompany.sistemaingreso;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -102,9 +104,70 @@ public class Reserva {
     public void setEstado(EstadoReserva estado) {
         this.estado = estado;
     }
-    public int generarCodigoReserva(ArrayList<Reserva> reservas){
-        return reservas.size()*100+1;
+    public static int generarCodigoReserva(ArrayList<Reserva> reservas){
+        return reservas.size()*1000+1;
         
     }
     
+    public static ArrayList<Reserva> reservasResidente(ArrayList<Reserva> reservas,String cedula){
+        
+        ArrayList<Reserva> reservaCliente=new ArrayList<Reserva>();
+        for (Reserva r:reservas){
+            if (r.getResidente().getCedula().equals(cedula)){
+                reservaCliente.add(r);
+            }
+        }
+        return reservaCliente;
+    }
+    public static void mostrarReservas(ArrayList<Reserva> reservas){
+        
+        int i=1;
+        for (Reserva r:reservas){
+            System.out.println(i+"..."+r);
+        }
+    }
+    public static void eliminarReserva(ArrayList<Reserva> reservas,Reserva r){
+        for(Reserva res:reservas){
+            if (res.equals(r)){
+                res.setEstado(EstadoReserva.INACTIVO);
+            }
+        }
+    }
+    public static void consultarReservaMzVilla(ArrayList<Reserva> reservas,String mz, String villa){
+        ArrayList<Reserva> reservaCliente=new ArrayList<Reserva>();
+        for(Reserva res:reservas){
+            if(res.getResidente().getMz().equals(mz) && res.getResidente().getVillaResidente().equals(villa)){
+                System.out.println(reservaCliente.add(res));
+            }
+        }
+        
+   
+    }
+    public static void verificarIngreso(ArrayList<Reserva> reservas,int codigo,String cedula){
+        for (Reserva r:reservas){
+            if (r.getCodigo()==codigo && r.getVisitante().getCedula().equals(cedula)){
+                System.out.println(r.getEstado());
+                if (r.getEstado().equals(EstadoReserva.ACTIVO)){
+                    System.out.println("Puede ingresar");
+                    r.setEstado(EstadoReserva.USADO);
+                }
+            }
+        }
+        
+    }
+    public static void reporteReservas(ArrayList reservas,String cedula){
+        ArrayList<Reserva> reservasR=reservasResidente(reservas, cedula);
+        for (Reserva r:reservasR){
+            System.out.println("Estado:"+r.getEstado()+"   Visitante:"+r.getVisitante().getNombre()+"  ");
+        }
+        
+        
+    }
+
+    //static class SortByDate implements Comparator<Date> {
+    //@Override
+//        public int compare(Date a, Date b) {
+//            return a.compareTo(b);
+//        }
+//    }
 }
